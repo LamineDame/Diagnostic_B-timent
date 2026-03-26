@@ -276,7 +276,3 @@ openFullPopupBtn.addEventListener("click", () => {
 
 map.setView([43.6478, 3.6974], 15);
 applyFilters();
-
-body {
-  zoom: 0.95;
-}
