@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diagnostic énergétique des bâtiments</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="brand-row">
+          <img
+            src="SIG/logo_Hérault_Energie.png"
+            alt="Logo Hérault Énergie"
+            class="brand-logo"
+          />
+          <div>
+            <h1>Diagnostic énergétique des bâtiments 2026 </h1>
+            <p>Cartographie interactive du patrimoine bâti | Frédéric LAMUR | Commune de Montarnaud</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <aside class="sidebar">
+        <section class="panel">
+          <h2>Filtrer par type</h2>
+
+          <label class="check-row">
+            <input type="checkbox" class="type-filter" value="Bâtiment scolaire" checked />
+            <span>Bâtiment scolaire</span>
+          </label>
+
+          <label class="check-row">
+            <input type="checkbox" class="type-filter" value="Bâtiment administratif" checked />
+            <span>Bâtiment administratif</span>
+          </label>
+
+          <label class="check-row">
+            <input type="checkbox" class="type-filter" value="Équipement" checked />
+            <span>Équipement</span>
+          </label>
+        </section>
+
+        <section class="panel">
+          <h2>Sélection rapide</h2>
+          <select id="typeSelect" class="select-control">
+            <option value="all">Tous les bâtiments</option>
+            <option value="Bâtiment scolaire">Bâtiment scolaire</option>
+            <option value="Bâtiment administratif">Bâtiment administratif</option>
+            <option value="Équipement">Équipement</option>
+          </select>
+        </section>
+
+        <section class="panel summary-panel">
+  <h2>Synthèse</h2>
+
+  <div class="stat-box">
+    <span class="stat-label">Bâtiments diagnostiqués</span>
+    <strong id="buildingCount">7</strong>
+  </div>
+
+  <div class="stat-box">
+    <span class="stat-label">Score moyen</span>
+    <strong id="avgScore">2.2</strong>
+  </div>
+</section>
+
+        <!-- Radar déplacé dans le tableau de bord -->
+        <section id="techDashboardCard" class="tech-dashboard-card hidden">
+          <div class="tech-dashboard-header">Indicateur technique</div>
+          <img id="techDashboardImage" src="" alt="Indicateur technique" />
+        </section>
+      </aside>
+
+      <section class="map-zone">
+        <div id="map"></div>
+
+        <div id="detailCard" class="detail-card hidden">
+          <button id="closeDetailCard" class="close-card">×</button>
+
+          <div class="detail-header" id="detailHeaderTitle">Nom du bâtiment</div>
+
+          <div class="detail-body">
+            <img id="detailPhoto" src="" alt="Photo du bâtiment" class="detail-thumb" />
+
+            <div class="detail-meta">
+              <h3 id="detailTitle">Nom du bâtiment</h3>
+              <p><strong>Type :</strong> <span id="detailType"></span></p>
+              <p><strong>Catégorie :</strong> <span id="detailCategory"></span></p>
+              <p><strong>Impact énergétique :</strong> <span id="detailScore"></span></p>
+            </div>
+          </div>
+
+          <div class="detail-actions">
+            <button id="openFullPopup" class="primary-btn">Voir la fiche complète</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
